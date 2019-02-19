@@ -143,10 +143,10 @@ int main(int argc, char **argv) {
   options.wds = 50;
   options.snr_level = 5.0;	// 5 dB SNR default
   
-  options.fo = '\0';
-  options.soundDev = '\0';	// default sound device
-  options.logfile = '\0';
-  options.setDate = '\0';
+  options.fo = NULL;
+  options.soundDev = NULL;	// default sound device
+  options.logfile = NULL;
+  options.setDate = NULL;
   options.repeat = 1;
   options.SRCaction = 0;
   options.delay = 1;

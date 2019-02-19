@@ -234,7 +234,7 @@ int Csrc::parity(int beg, int end) const
 void Csrc::set_today()
 {
   struct tm ttmm;
-  time_t tt = time('\0');
+  time_t tt = time(NULL);
   localtime_r(&tt, &ttmm);
 //               struct tm {
 //                   int tm_sec;         /* seconds */
@@ -660,7 +660,7 @@ int Csrc::setWDS(int Wlength, double snr)
     adaptive_decision_threshold = true;
   }
 
-  snr_level = pow10(snr/10);
+  snr_level = exp10(snr/10);
 
   if(verbose_level >= 2) lout <<"WDS. New window length: " <<window_length <<" symbols; SNR: " <<10*log10(snr_level) <<" dB\n";
 
@@ -1485,7 +1485,7 @@ bool Csrc::set(const struct tm& ttmm)
 bool Csrc::set(const char* strDate, const char* format)
 {
   tm ttmm;
-  time_t tt = time('\0');
+  time_t tt = time(NULL);
   localtime_r(&tt, &ttmm);		// initialize the ttmm to the current date/time
 
   strptime(strDate, format, &ttmm);	// convert a string to a struct tm
